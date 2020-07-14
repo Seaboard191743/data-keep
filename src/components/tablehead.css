@@ -1,0 +1,6 @@
+.tableHead {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 2px solid rgb(192, 191, 191);
+    margin-bottom: 50px;
+}

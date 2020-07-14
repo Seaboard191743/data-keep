@@ -1,0 +1,23 @@
+.form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.form__name {
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
+    height: 40px;
+    border: 1px solid rgb(192, 191, 191);
+    border-radius: 5px;
+    padding: 0 20px;
+}
+.label--font--style {
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.form__submit {
+    height: 50px;
+    border: none;
+    color: #fff;
+    background: rgb(7, 102, 190);
+    border-radius: 5px;
+}

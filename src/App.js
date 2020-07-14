@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import "./app.css";
+import Header from './components/Header';
+import TableHead from './components/TableHead';
+import Form from './components/Form';
+import DataList from './components/DataList';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [data, setData] = useState({name: "", job: ""});
+    const [person, setPerson] = useState([]);
+    
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setData(prevData => ({...prevData, [name]: value}))
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setPerson(prevPerson => [...prevPerson, data])
+        setData(() => ({name: "", job: ""}))
+    }
+    const handleRemove = (i) => {
+        setPerson(prevPerson => prevPerson.filter((item, index) => index !== i))
+    }
+
+    return (
+        <div className = "container">
+            <Header />
+            <TableHead />
+            <DataList data = {person} onClick = {handleRemove} />
+            <Form onChange = {handleChange} onSubmit = {handleSubmit} data = {person} clear = {data} />
+        </div>
+    )
+      
 }
 
 export default App;
